@@ -1,6 +1,7 @@
 """
 This file contains Django authentication backends. For more information visit
 https://docs.djangoproject.com/en/dev/topics/auth/customizing/.
+@author : ranvijay sachan
 """
 from django.conf import settings
 from social.backends.oauth import BaseOAuth2

@@ -1,0 +1,44 @@
+AUTHENTICATION_BACKENDS = (
+    'auth_backends.backends.AnyOpenIdConnect',
+    'django.contrib.auth.backends.ModelBackend',)
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    'social.pipeline.mail.mail_validation',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.debug.debug',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details',
+    'social.pipeline.debug.debug'
+)
+
+# settings as per your requirement #
+
+# Set to true if using SSL and running behind a proxy
+# SOCIAL_AUTH_REDIRECT_IS_HTTPS = False
+
+# Fields passed to the custom user model when creating a new user
+# SOCIAL_AUTH_USER_FIELDS = ['username', 'email', 'first_name', 'last_name']
+SOCIAL_AUTH_RAISE_EXCEPTIONS = False
+# SOCIAL_AUTH_LOGIN_ERROR_URL = '/auth/error/'
+# LOGIN_URL = '/login/'
+# ENABLE_AUTO_AUTH = False
+LOGIN_REDIRECT_URL = '/'
+# SOCIAL_AUTH_ANY_OIDC_SCOPE = ['']
+# EXTRA_SCOPE = ['']
+
+SOCIAL_AUTH_ANY_OIDC_KEY = ''
+SOCIAL_AUTH_ANY_OIDC_SECRET = ''
+ANY_ID_TOKEN_ISSUER = "accounts.google.com"
+ANY_AUTHORIZATION_URL = "https://accounts.google.com/o/oauth2/auth"
+ANY_ACCESS_TOKEN_URL = "https://accounts.google.com/o/oauth2/token"
+ANY_USER_INFO_URL = 'https://www.googleapis.com/oauth2/v3/userinfo'
+
+# OIDC ID token decryption key. This value is used to validate the ID token.
+# This should be the same value as SOCIAL_AUTH_ANY_OIDC_SECRET
+SOCIAL_AUTH_ANY_OIDC_ID_TOKEN_DECRYPTION_KEY = SOCIAL_AUTH_ANY_OIDC_SECRET

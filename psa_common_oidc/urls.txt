@@ -1,0 +1,5 @@
+from django.views.generic import RedirectView
+
+url(r'^accounts/login/$',
+            RedirectView.as_view(url=reverse_lazy('social:begin', args=['dh-oidc']),
+                                 permanent=False, query_string=True), name='login'),
